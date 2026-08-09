@@ -1,11 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>NovaMart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NovaMart | Electronics Store</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
-     
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <a href="#home">
+                <img src="images/logo.png" alt="NovaMart Logo">
+            </a>
+        </div>
+
+        <nav>
+            <ul class="nav-links">
+
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#categories">Categories</a>
+                </li>
+
+                <li>
+                    <a href="#products">Shop</a>
+                </li>
+
+                <li>
+                    <a href="#offers">Deals</a>
+                </li>
+
+                <li>
+                    <a href="#reviews">Reviews</a>
+                </li>
+
+            </ul>
+        </nav>
+
+        <div class="nav-actions">
+
+            <button class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+            <button class="wishlist-btn">
+                <i class="fa-regular fa-heart"></i>
+            </button>
+
+            <button class="cart-btn">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span class="cart-count">0</span>
+
+            </button>
+
+        </div>
+
+        <!-- Mobile Menu -->
+
+        <button class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </header>
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <span class="hero-label">
+                NEW COLLECTION 2026
+            </span>
+
+            <h1>
+                Upgrade Your
+                <span>Tech Lifestyle</span>
+            </h1>
+
+            <p>
+                Discover the latest electronics with the
+                best quality and unbeatable prices.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#products" class="btn shop-btn">
+                    Shop Now
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+                <a href="#offers" class="btn deals-btn">
+                    Explore Deals
+                </a>
+
+            </div>
+
+            <div class="hero-features">
+
+                <div class="hero-feature">
+
+                    <i class="fa-solid fa-truck-fast"></i>
+
+                    <div>
+                        <strong>Free Shipping</strong>
+                        <small>On all orders</small>
+                    </div>
+
+                </div>
+
+
+                <div class="hero-feature">
+
+                    <i class="fa-solid fa-rotate-left"></i>
+
+                    <div>
+                        <strong>Money Back</strong>
+                        <small>30-day return</small>
+                    </div>
+
+                </div>
+
+
+                <div class="hero-feature">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <div>
+                        <strong>Secure Payment</strong>
+                        <small>100% secure</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-image">
+
+            <img src="images/hero-banner.png"
+                alt="NovaMart Electronics">
+
+        </div>
+
+    </section>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
 </body>
+
 </html>
