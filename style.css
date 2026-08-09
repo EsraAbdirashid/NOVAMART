@@ -248,3 +248,187 @@ button {
 
     cursor: pointer;
 }
+
+/* ================= HERO SECTION ================= */
+
+.hero {
+    width: 100%;
+    min-height: 360px;
+
+    display: flex;
+    align-items: center;
+
+    background: #07120f;
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* HERO CONTENT */
+
+.hero-content {
+    width: 50%;
+
+    padding: 55px 0 45px 6%;
+
+    position: relative;
+    z-index: 2;
+}
+
+.hero-label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #00c853;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.hero-content h1 {
+    color: #ffffff;
+
+    font-size: 36px;
+    line-height: 1.05;
+
+    margin-bottom: 14px;
+}
+
+.hero-content h1 span {
+    display: block;
+
+    color: #00c853;
+}
+
+
+.hero-content p {
+    max-width: 360px;
+
+    color: #d7d7d7;
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    margin-bottom: 24px;
+}
+
+
+/* HERO BUTTONS */
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 38px;
+}
+
+.btn {
+    height: 34px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 17px;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.shop-btn {
+    background: #00c853;
+    color: #ffffff;
+
+    gap: 8px;
+}
+
+.shop-btn:hover {
+    background: #00a844;
+    transform: translateY(-2px);
+}
+
+.deals-btn {
+    border: 1px solid #ffffff55;
+    color: #ffffff;
+}
+
+.deals-btn:hover {
+    border-color: #00c853;
+    color: #00c853;
+}
+
+
+/* HERO FEATURES */
+
+.hero-features {
+    display: flex;
+    align-items: center;
+
+    gap: 25px;
+}
+
+.hero-feature {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+.hero-feature > i {
+    color: #00c853;
+
+    font-size: 14px;
+}
+
+.hero-feature div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.hero-feature strong {
+    color: #ffffff;
+
+    font-size: 10px;
+}
+
+.hero-feature small {
+    color: #aaaaaa;
+
+    font-size: 8px;
+}
+
+
+/* HERO IMAGE */
+
+.hero-image {
+    width: 50%;
+    height: 100%;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
