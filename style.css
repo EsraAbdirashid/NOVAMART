@@ -138,10 +138,6 @@ button {
 }
 
 
-/* =========================
-   COMPARE / WISHLIST / CART
-========================= */
-
 .nav-actions {
     display: flex;
     align-items: center;
@@ -180,7 +176,7 @@ button {
 }
 
 
-/* CART NUMBER */
+
 
 .cart {
     position: relative;
