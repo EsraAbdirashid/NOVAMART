@@ -55,11 +55,6 @@ button {
     gap: 30px;
 }
 
-
-/* =========================
-   LOGO
-========================= */
-
 .logo a {
     display: flex;
     align-items: center;
@@ -79,9 +74,6 @@ button {
     display: block;
 }
 
-/* =========================
-   SEARCH
-========================= */
 
 .search-box {
     width: 380px;
