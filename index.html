@@ -19,67 +19,113 @@
 
     <!-- ================= NAVBAR ================= -->
 
-    <header class="navbar">
+    <!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <!-- TOP NAVBAR -->
+
+    <div class="navbar-top">
+
+        <!-- LOGO -->
 
         <div class="logo">
             <a href="#home">
-                <img src="images/logopng.png" alt="NovaMart Logo">
+                <img src="images/logo.png" alt="NovaMart Logo">
             </a>
         </div>
 
-        <nav>
-            <ul class="nav-links">
 
-                <li>
-                    <a href="#home">Home</a>
-                </li>
+        <!-- SEARCH -->
 
-                <li>
-                    <a href="#categories">Categories</a>
-                </li>
+        <div class="search-box">
 
-                <li>
-                    <a href="#products">Shop</a>
-                </li>
+            <input
+                type="text"
+                placeholder="Search for products..."
+            >
 
-                <li>
-                    <a href="#offers">Deals</a>
-                </li>
-
-                <li>
-                    <a href="#reviews">Reviews</a>
-                </li>
-
-            </ul>
-        </nav>
-
-        <div class="nav-actions">
-
-            <button class="search-btn">
+            <button type="button">
                 <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-
-            <button class="wishlist-btn">
-                <i class="fa-regular fa-heart"></i>
-            </button>
-
-            <button class="cart-btn">
-
-                <i class="fa-solid fa-cart-shopping"></i>
-
-                <span class="cart-count">0</span>
-
             </button>
 
         </div>
 
-        <!-- Mobile Menu -->
 
-        <button class="menu-toggle">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+        <!-- NAV ACTIONS -->
 
-    </header>
+        <div class="nav-actions">
+
+            <a href="#" class="compare">
+                <i class="fa-solid fa-code-compare"></i>
+                <span>Compare</span>
+            </a>
+
+            <a href="#" class="wishlist">
+                <i class="fa-solid fa-heart"></i>
+                <span>Wishlist</span>
+            </a>
+
+            <a href="#" class="cart">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span>Cart</span>
+
+                <small class="cart-count">0</small>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="main-nav">
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="#home" class="active">Home</a>
+            </li>
+
+            <li>
+                <a href="#products">Shop</a>
+            </li>
+
+            <li>
+                <a href="#categories">
+                    Categories
+                    <i class="fa-solid fa-chevron-down"></i>
+                </a>
+            </li>
+
+            <li>
+                <a href="#offers">Deals</a>
+            </li>
+
+            <li>
+                <a href="#reviews">About Us</a>
+            </li>
+
+            <li>
+                <a href="#reviews">Contact Us</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- MOBILE MENU BUTTON -->
+
+    <button class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+</header>
 
 
     <!-- ================= HERO SECTION ================= -->
