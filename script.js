@@ -44,3 +44,29 @@ navItems.forEach((item) => {
 
 });
 
+
+// ================= ADD TO CART =================
+
+let cartCount = 0;
+
+const cartCountElement = document.querySelector(".cart-count");
+const addToCartButtons = document.querySelectorAll(".add-to-cart");
+
+addToCartButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        cartCount++;
+
+        cartCountElement.textContent = cartCount;
+
+        // Small animation
+        button.style.transform = "scale(1.15)";
+
+        setTimeout(() => {
+            button.style.transform = "scale(1)";
+        }, 200);
+
+    });
+
+});
