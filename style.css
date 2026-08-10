@@ -2322,3 +2322,202 @@ section {
         align-items: center;
         gap: 6px;
 }
+
+/* ================= COMPARE PANEL ================= */
+
+.compare-panel {
+    position: fixed;
+
+    top: 0;
+    right: -400px;
+
+    width: 380px;
+    height: 100vh;
+
+    background: #ffffff;
+
+    z-index: 2000;
+
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+
+    display: flex;
+    flex-direction: column;
+
+    transition: right 0.35s ease;
+}
+
+.compare-panel.active {
+    right: 0;
+}
+
+
+/* COMPARE HEADER */
+
+.compare-header {
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 22px;
+
+    background: #07120f;
+
+    color: #ffffff;
+}
+
+.compare-header h2 {
+    font-size: 18px;
+}
+
+.compare-close {
+    width: 32px;
+    height: 32px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.compare-close:hover {
+    background: #00c853;
+    color: #07120f;
+}
+
+
+/* COMPARE ITEMS */
+
+.compare-items {
+    flex: 1;
+
+    padding: 20px;
+
+    overflow-y: auto;
+}
+
+.empty-compare {
+    text-align: center;
+
+    color: #888;
+
+    font-size: 13px;
+
+    margin-top: 50px;
+}
+
+
+/* COMPARE CARD */
+
+.compare-item {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.compare-item img {
+    width: 65px;
+    height: 65px;
+
+    object-fit: contain;
+
+    background: #f8f8f8;
+
+    border-radius: 7px;
+}
+
+.compare-item-info {
+    flex: 1;
+}
+
+.compare-item-info h3 {
+    color: #07120f;
+
+    font-size: 11px;
+
+    margin-bottom: 7px;
+}
+
+.compare-item-info strong {
+    color: #07120f;
+
+    font-size: 11px;
+}
+
+.remove-compare {
+    width: 25px;
+    height: 25px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #999;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.remove-compare:hover {
+    color: #e53935;
+}
+
+
+/* COMPARE BUTTON */
+
+.product-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.product-actions button {
+    width: 27px;
+    height: 27px;
+
+    border: 1px solid #eeeeee;
+    border-radius: 6px;
+
+    background: #ffffff;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.compare-btn {
+    color: #07120f;
+}
+
+.compare-btn:hover,
+.compare-btn.active {
+    background: #07120f;
+    color: #ffffff;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .compare-panel {
+        width: 90%;
+        max-width: 380px;
+    }
+
+}
