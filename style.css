@@ -1018,3 +1018,205 @@ button {
 .newsletter-form button i {
     margin-left: 5px;
 }
+
+
+/* ================= FOOTER ================= */
+
+.footer {
+    width: 100%;
+
+    background: #07120f;
+
+    color: #ffffff;
+
+    padding: 40px 6% 0;
+}
+
+
+/* FOOTER CONTENT */
+
+.footer-content {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr 1.4fr;
+
+    gap: 45px;
+
+    padding-bottom: 35px;
+}
+
+
+/* FOOTER COLUMNS */
+
+.footer-column {
+    position: relative;
+}
+
+.footer-column h3 {
+    color: #ffffff;
+
+    font-size: 13px;
+
+    margin-bottom: 16px;
+}
+
+.footer-column ul {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.footer-column ul li {
+    font-size: 10px;
+}
+
+
+/* ABOUT */
+
+.footer-about {
+    padding-right: 30px;
+}
+
+.footer-logo {
+    width: 140px;
+
+    margin-bottom: 12px;
+}
+
+.footer-logo img {
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+}
+
+.footer-about p {
+    max-width: 280px;
+
+    color: #aeb5b2;
+
+    font-size: 10px;
+
+    line-height: 1.7;
+
+    margin-bottom: 18px;
+}
+
+
+/* FOOTER LINKS */
+
+.footer-column a {
+    color: #aeb5b2;
+
+    font-size: 10px;
+
+    transition: 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: #00c853;
+
+    padding-left: 3px;
+}
+
+
+/* SOCIAL ICONS */
+
+.footer-socials {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.footer-socials a {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #10221c;
+
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    transition: 0.3s ease;
+}
+
+.footer-socials a:hover {
+    background: #00c853;
+
+    color: #07120f;
+
+    transform: translateY(-2px);
+}
+
+
+/* CONTACT */
+
+.contact-list {
+    gap: 13px !important;
+}
+
+.contact-list li {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 9px;
+
+    color: #aeb5b2;
+}
+
+.contact-list i {
+    width: 13px;
+
+    color: #00c853;
+
+    font-size: 11px;
+
+    margin-top: 1px;
+}
+
+
+/* FOOTER BOTTOM */
+
+.footer-bottom {
+    min-height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-bottom p {
+    color: #777f7b;
+
+    font-size: 9px;
+}
+
+.payment-methods {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.payment-methods i {
+    color: #aeb5b2;
+
+    font-size: 20px;
+}
