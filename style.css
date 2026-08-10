@@ -2061,3 +2061,7 @@ transform: translateY(-2px);
 .clear-search:hover {
     background: #00a844;
 }
+
+.nav-links.active{
+        display:flex;
+}
