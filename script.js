@@ -47,6 +47,7 @@ navItems.forEach((item) => {
 
 // ================= ADD TO CART =================
 
+
 let cartCount = 0;
 
 const cartCountElement = document.querySelector(".cart-count");
