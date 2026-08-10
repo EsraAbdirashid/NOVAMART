@@ -473,3 +473,309 @@ function removeNoProductsMessage() {
     }
 
 }
+
+// ================= WISHLIST =================
+
+const wishlistBtn = document.querySelector("#wishlistBtn");
+const wishlistPanel = document.querySelector(".wishlist-panel");
+const wishlistClose = document.querySelector("#wishlistClose");
+const wishlistOverlay = document.querySelector(".wishlist-overlay");
+
+const wishlistItems = document.querySelector(".wishlist-items");
+const wishlistCountElement =
+    document.querySelector(".wishlist-count");
+
+const wishlistButtons =
+    document.querySelectorAll(".add-to-wishlist");
+
+let wishlistProducts = [];
+
+
+// ================= OPEN WISHLIST =================
+
+wishlistBtn.addEventListener("click", (e) => {
+
+    e.preventDefault();
+
+    wishlistPanel.classList.add("active");
+    wishlistOverlay.classList.add("active");
+
+});
+
+
+// ================= CLOSE WISHLIST =================
+
+wishlistClose.addEventListener("click", () => {
+
+    wishlistPanel.classList.remove("active");
+    wishlistOverlay.classList.remove("active");
+
+});
+
+
+wishlistOverlay.addEventListener("click", () => {
+
+    wishlistPanel.classList.remove("active");
+    wishlistOverlay.classList.remove("active");
+
+});
+
+
+// ================= ADD TO WISHLIST =================
+
+wishlistButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        const productCard =
+            button.closest(".product-card");
+
+        const productName =
+            productCard.querySelector(
+                ".product-info h3"
+            ).textContent;
+
+        const productPrice =
+            productCard.querySelector(
+                ".product-bottom strong"
+            ).textContent;
+
+        const productImage =
+            productCard.querySelector(
+                ".product-image img"
+            ).src;
+
+
+        // CHECK IF ALREADY EXISTS
+
+        const alreadyExists =
+            wishlistProducts.some(
+                (product) =>
+                    product.name === productName
+            );
+
+
+        if (alreadyExists) {
+
+            button.classList.remove("active");
+
+            wishlistProducts =
+                wishlistProducts.filter(
+                    (product) =>
+                        product.name !== productName
+                );
+
+        } else {
+
+            wishlistProducts.push({
+
+                name: productName,
+
+                price: productPrice,
+
+                image: productImage
+
+            });
+
+            button.classList.add("active");
+
+        }
+
+
+        updateWishlist();
+
+    });
+
+});
+
+
+// ================= UPDATE WISHLIST =================
+
+function updateWishlist() {
+
+    wishlistItems.innerHTML = "";
+
+
+    wishlistCountElement.textContent =
+        wishlistProducts.length;
+
+
+    // EMPTY
+
+    if (wishlistProducts.length === 0) {
+
+        wishlistItems.innerHTML = `
+            <p class="empty-wishlist">
+                Your wishlist is empty.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    // PRODUCTS
+
+    wishlistProducts.forEach((product, index) => {
+
+        const item =
+            document.createElement("div");
+
+        item.classList.add("wishlist-item");
+
+
+        item.innerHTML = `
+
+            <img
+                src="${product.image}"
+                alt="${product.name}"
+            >
+
+            <div class="wishlist-item-info">
+
+                <h3>
+                    ${product.name}
+                </h3>
+
+                <strong>
+                    ${product.price}
+                </strong>
+
+            </div>
+
+
+            <button
+                class="wishlist-add-cart"
+                data-index="${index}"
+                title="Add to cart"
+            >
+
+                <i class="fa-solid fa-cart-plus"></i>
+
+            </button>
+
+
+            <button
+                class="remove-wishlist-item"
+                data-index="${index}"
+                title="Remove"
+            >
+
+                <i class="fa-solid fa-trash"></i>
+
+            </button>
+
+        `;
+
+
+        wishlistItems.appendChild(item);
+
+    });
+
+
+    // ================= REMOVE =================
+
+    const removeButtons =
+        document.querySelectorAll(
+            ".remove-wishlist-item"
+        );
+
+
+    removeButtons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            const index =
+                Number(button.dataset.index);
+
+            const removedProduct =
+                wishlistProducts[index];
+
+            wishlistProducts.splice(index, 1);
+
+
+            // RESET HEART
+
+            wishlistButtons.forEach((heart) => {
+
+                const card =
+                    heart.closest(".product-card");
+
+                const name =
+                    card.querySelector(
+                        ".product-info h3"
+                    ).textContent;
+
+                if (
+                    name === removedProduct.name
+                ) {
+
+                    heart.classList.remove(
+                        "active"
+                    );
+
+                }
+
+            });
+
+
+            updateWishlist();
+
+        });
+
+    });
+
+
+    // ================= ADD TO CART =================
+
+    const addCartButtons =
+        document.querySelectorAll(
+            ".wishlist-add-cart"
+        );
+
+
+    addCartButtons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            const index =
+                Number(button.dataset.index);
+
+            const product =
+                wishlistProducts[index];
+
+
+            // Find matching product card
+
+            const productCards =
+                document.querySelectorAll(
+                    ".product-card"
+                );
+
+
+            productCards.forEach((card) => {
+
+                const name =
+                    card.querySelector(
+                        ".product-info h3"
+                    ).textContent;
+
+
+                if (name === product.name) {
+
+                    const cartButton =
+                        card.querySelector(
+                            ".add-to-cart"
+                        );
+
+                    cartButton.click();
+
+                }
+
+            });
+
+        });
+
+    });
+
+}
