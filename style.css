@@ -1750,3 +1750,218 @@ section{
 .remove-cart-item:hover {
     color: #e53935;
 }
+
+
+/* ================= CHECKOUT SUCCESS MODAL ================= */
+
+.checkout-modal {
+position: fixed;
+inset: 0;
+
+width: 100%;
+height: 100%;
+
+display: none;
+align-items: center;
+justify-content: center;
+
+background: rgba(0, 0, 0, 0.65);
+
+padding: 20px;
+
+z-index: 9999;
+
+}
+
+.checkout-modal.active {
+display: flex;
+}
+
+/* MODAL BOX */
+
+.checkout-modal-content {
+width: 100%;
+max-width: 390px;
+
+position: relative;
+
+padding: 35px 28px 28px;
+
+background: #ffffff;
+
+border-radius: 14px;
+
+text-align: center;
+
+box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+
+animation: checkoutPop 0.3s ease;
+
+}
+
+/* POP ANIMATION */
+
+@keyframes checkoutPop {
+
+from {
+    opacity: 0;
+    transform: scale(0.85);
+}
+
+to {
+    opacity: 1;
+    transform: scale(1);
+}
+
+}
+
+/* CLOSE BUTTON */
+
+.checkout-close {
+position: absolute;
+
+top: 12px;
+right: 12px;
+
+width: 30px;
+height: 30px;
+
+border: none;
+
+background: #f1f3f2;
+
+color: #07120f;
+
+border-radius: 50%;
+
+cursor: pointer;
+
+font-size: 13px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+transition: 0.3s ease;
+
+}
+
+.checkout-close:hover {
+background: #07120f;
+color: #ffffff;
+}
+
+/* SUCCESS ICON */
+
+.checkout-success-icon {
+width: 65px;
+height: 65px;
+
+margin: 0 auto 18px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+background: #00c853;
+
+color: #ffffff;
+
+border-radius: 50%;
+
+font-size: 27px;
+
+box-shadow: 0 7px 18px rgba(0, 200, 83, 0.25);
+
+}
+
+/* TITLE */
+
+.checkout-modal-content h2 {
+color: #07120f;
+
+font-size: 22px;
+
+margin-bottom: 10px;
+
+}
+
+/* TEXT */
+
+.checkout-modal-content p {
+color: #666;
+
+font-size: 13px;
+
+line-height: 1.6;
+
+margin-bottom: 22px;
+
+}
+
+.checkout-modal-content p strong {
+color: #07120f;
+}
+
+/* OK BUTTON */
+
+.checkout-ok-btn {
+width: 100%;
+
+height: 42px;
+
+border: none;
+
+border-radius: 7px;
+
+background: #00c853;
+
+color: #ffffff;
+
+font-size: 13px;
+
+font-weight: 700;
+
+cursor: pointer;
+
+transition: 0.3s ease;
+
+}
+
+.checkout-ok-btn:hover {
+background: #00a844;
+
+transform: translateY(-2px);
+
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+.checkout-modal {
+    padding: 18px;
+}
+
+.checkout-modal-content {
+    max-width: 340px;
+
+    padding: 30px 22px 23px;
+}
+
+.checkout-success-icon {
+    width: 58px;
+    height: 58px;
+
+    font-size: 24px;
+}
+
+.checkout-modal-content h2 {
+    font-size: 20px;
+}
+
+.checkout-modal-content p {
+    font-size: 12px;
+}
+
+}
