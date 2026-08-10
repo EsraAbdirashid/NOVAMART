@@ -792,3 +792,229 @@ button {
 
     display: block;
 }
+
+
+/* ================= REVIEWS SECTION ================= */
+
+.reviews-section {
+    width: 100%;
+
+    padding: 28px 6% 30px;
+
+    background: #ffffff;
+}
+
+
+.reviews-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 16px;
+
+    margin-bottom: 25px;
+}
+
+
+/* REVIEW CARD */
+
+.review-card {
+    padding: 18px;
+
+    background: #ffffff;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 9px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+    transition: 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.09);
+}
+
+
+/* STARS */
+
+.review-stars {
+    color: #00c853;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+
+/* REVIEW TEXT */
+
+.review-card p {
+    color: #555;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    margin-bottom: 16px;
+}
+
+
+/* USER */
+
+.review-user {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #00c853;
+
+    color: #ffffff;
+
+    border-radius: 50%;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.review-user div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.review-user strong {
+    color: #07120f;
+
+    font-size: 10px;
+}
+
+.review-user small {
+    color: #999;
+
+    font-size: 8px;
+}
+
+
+/* ================= NEWSLETTER ================= */
+
+.newsletter {
+    width: 100%;
+
+    min-height: 120px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding: 22px 28px;
+
+    background: #07120f;
+
+    border-radius: 10px;
+}
+
+
+.newsletter-content {
+    max-width: 480px;
+}
+
+.newsletter-content span {
+    color: #00c853;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.newsletter-content h2 {
+    color: #ffffff;
+
+    font-size: 19px;
+
+    margin: 5px 0 6px;
+}
+
+.newsletter-content p {
+    color: #aeb5b2;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* NEWSLETTER FORM */
+
+.newsletter-form {
+    display: flex;
+
+    width: 360px;
+
+    height: 36px;
+
+    background: #ffffff;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+}
+
+.newsletter-form input {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 0 12px;
+
+    border: none;
+
+    outline: none;
+
+    font-size: 10px;
+}
+
+.newsletter-form button {
+    width: 105px;
+
+    border: none;
+
+    background: #00c853;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background: #00a844;
+}
+
+.newsletter-form button i {
+    margin-left: 5px;
+}
