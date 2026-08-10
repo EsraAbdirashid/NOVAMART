@@ -300,3 +300,176 @@ checkoutClose.addEventListener("click", () => {
 checkoutOk.addEventListener("click", () => {
     checkoutModal.classList.remove("active");
 });
+
+// ================= PRODUCT SEARCH =================
+
+const searchInput = document.querySelector("#searchInput");
+const searchButton = document.querySelector("#searchButton");
+const productsGrid = document.querySelector(".products-grid");
+
+const productCards = Array.from(
+    document.querySelectorAll(".product-card")
+);
+
+
+// SEARCH FUNCTION
+
+function searchProducts() {
+
+    const searchValue = searchInput.value
+        .trim()
+        .toLowerCase();
+
+    let foundProducts = 0;
+
+
+    // SHOW ALL PRODUCTS IF SEARCH IS EMPTY
+
+    if (searchValue === "") {
+
+        productCards.forEach((card) => {
+            card.style.display = "";
+        });
+
+        removeNoProductsMessage();
+
+        return;
+    }
+
+
+    // SEARCH PRODUCTS
+
+    productCards.forEach((card) => {
+
+        const productName =
+            card.querySelector(".product-info h3")
+                .textContent
+                .toLowerCase();
+
+        if (productName.includes(searchValue)) {
+
+            card.style.display = "";
+
+            foundProducts++;
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+
+    // NO PRODUCTS FOUND
+
+    if (foundProducts === 0) {
+
+        showNoProductsMessage();
+
+    } else {
+
+        removeNoProductsMessage();
+
+    }
+
+}
+
+
+// SEARCH BUTTON
+
+searchButton.addEventListener("click", () => {
+
+    searchProducts();
+
+    document.querySelector("#products").scrollIntoView({
+        behavior: "smooth"
+    });
+
+});
+
+
+// ENTER KEY
+
+searchInput.addEventListener("keydown", (event) => {
+
+    if (event.key === "Enter") {
+
+        searchProducts();
+
+        document.querySelector("#products").scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+});
+
+
+// LIVE SEARCH
+
+searchInput.addEventListener("input", () => {
+
+    searchProducts();
+
+});
+
+
+// NO PRODUCTS MESSAGE
+
+function showNoProductsMessage() {
+
+    removeNoProductsMessage();
+
+    const message = document.createElement("div");
+
+    message.className = "no-products";
+
+    message.innerHTML = `
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <h3>No Products Found</h3>
+
+        <p>
+            We couldn't find any product matching
+            "${searchInput.value}".
+        </p>
+
+        <button class="clear-search">
+            Clear Search
+        </button>
+    `;
+
+    productsGrid.appendChild(message);
+
+
+    // CLEAR BUTTON
+
+    message.querySelector(".clear-search")
+        .addEventListener("click", () => {
+
+            searchInput.value = "";
+
+            searchProducts();
+
+            searchInput.focus();
+
+        });
+
+}
+
+
+// REMOVE NO PRODUCTS MESSAGE
+
+function removeNoProductsMessage() {
+
+    const message =
+        document.querySelector(".no-products");
+
+    if (message) {
+
+        message.remove();
+
+    }
+
+}
