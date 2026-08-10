@@ -254,12 +254,9 @@ button {
 .hero {
     width: 100%;
     min-height: 360px;
-
     display: flex;
     align-items: center;
-
     background: #0D1110;
-
     position: relative;
     overflow: hidden;
 }
