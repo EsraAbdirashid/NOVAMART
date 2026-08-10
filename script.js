@@ -70,3 +70,42 @@ addToCartButtons.forEach((button) => {
     });
 
 });
+
+// ================= CART PANEL =================
+
+const cartButton = document.querySelector(".cart");
+const cartPanel = document.querySelector(".cart-panel");
+const cartClose = document.querySelector(".cart-close");
+const cartOverlay = document.querySelector(".cart-overlay");
+
+
+// OPEN CART
+
+cartButton.addEventListener("click", (e) => {
+
+    e.preventDefault();
+
+    cartPanel.classList.add("active");
+    cartOverlay.classList.add("active");
+
+});
+
+
+// CLOSE CART
+
+cartClose.addEventListener("click", () => {
+
+    cartPanel.classList.remove("active");
+    cartOverlay.classList.remove("active");
+
+});
+
+
+// CLOSE CART WHEN CLICKING OVERLAY
+
+cartOverlay.addEventListener("click", () => {
+
+    cartPanel.classList.remove("active");
+    cartOverlay.classList.remove("active");
+
+});
