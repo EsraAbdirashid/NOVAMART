@@ -246,3 +246,57 @@ removeButtons.forEach((button) => {
 
 // ================= CHECKOUT =================
 
+// ================= CHECKOUT =================
+
+const checkoutBtn = document.querySelector(".checkout-btn");
+const checkoutModal = document.querySelector("#checkoutModal");
+const checkoutClose = document.querySelector("#checkoutClose");
+const checkoutOk = document.querySelector("#checkoutOk");
+
+checkoutBtn.addEventListener("click", () => {
+
+    // CHECK IF CART IS EMPTY
+    if (cartProducts.length === 0) {
+
+        checkoutModal.querySelector("h2").textContent = "Your Cart Is Empty!";
+
+        checkoutModal.querySelector("p").innerHTML =
+            "Please add a product to your cart before checkout.";
+
+        checkoutModal.querySelector(".checkout-success-icon").innerHTML =
+            '<i class="fa-solid fa-cart-shopping"></i>';
+
+        checkoutOk.textContent = "OK";
+
+        checkoutModal.classList.add("active");
+
+        return;
+    }
+
+
+    // CART HAS PRODUCTS
+    checkoutModal.querySelector("h2").textContent =
+        "Order Confirmed!";
+
+    checkoutModal.querySelector("p").innerHTML =
+        'Thank you for shopping with <strong>NovaMart</strong>. Your order has been successfully placed.';
+
+    checkoutModal.querySelector(".checkout-success-icon").innerHTML =
+        '<i class="fa-solid fa-check"></i>';
+
+    checkoutOk.textContent = "OK";
+
+    checkoutModal.classList.add("active");
+
+});
+
+
+// CLOSE CHECKOUT MODAL
+
+checkoutClose.addEventListener("click", () => {
+    checkoutModal.classList.remove("active");
+});
+
+checkoutOk.addEventListener("click", () => {
+    checkoutModal.classList.remove("active");
+});
