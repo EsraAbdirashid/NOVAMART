@@ -779,3 +779,195 @@ function updateWishlist() {
     });
 
 }
+
+
+// ================= COMPARE =================
+
+const comparePanel = document.querySelector(".compare-panel");
+const compareClose = document.querySelector(".compare-close");
+const compareItems = document.querySelector(".compare-items");
+const compareLink = document.querySelector(".compare");
+
+const compareButtons = document.querySelectorAll(".compare-btn");
+
+let compareProducts = [];
+
+
+// OPEN COMPARE
+
+compareLink.addEventListener("click", (e) => {
+
+    e.preventDefault();
+
+    comparePanel.classList.add("active");
+
+    document.querySelector(".cart-overlay").classList.add("active");
+
+});
+
+
+// CLOSE COMPARE
+
+compareClose.addEventListener("click", () => {
+
+    comparePanel.classList.remove("active");
+
+    document.querySelector(".cart-overlay").classList.remove("active");
+
+});
+
+
+// ADD TO COMPARE
+
+compareButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        const productCard = button.closest(".product-card");
+
+        const productName =
+            productCard.querySelector(".product-info h3").textContent;
+
+        const productPrice =
+            productCard.querySelector(".product-bottom strong").textContent;
+
+        const productImage =
+            productCard.querySelector(".product-image img").src;
+
+
+        // CHECK IF ALREADY EXISTS
+
+        const alreadyExists = compareProducts.some(
+            product => product.name === productName
+        );
+
+
+        if (alreadyExists) {
+
+            return;
+
+        }
+
+
+        compareProducts.push({
+
+            name: productName,
+            price: productPrice,
+            image: productImage
+
+        });
+
+
+        button.classList.add("active");
+
+        updateCompare();
+
+    });
+
+});
+
+
+// UPDATE COMPARE
+
+function updateCompare() {
+
+    compareItems.innerHTML = "";
+
+
+    if (compareProducts.length === 0) {
+
+        compareItems.innerHTML = `
+            <p class="empty-compare">
+                No products to compare.
+            </p>
+        `;
+
+        return;
+
+    }
+
+
+    compareProducts.forEach((product, index) => {
+
+        const item = document.createElement("div");
+
+        item.classList.add("compare-item");
+
+        item.innerHTML = `
+
+            <img
+                src="${product.image}"
+                alt="${product.name}"
+            >
+
+            <div class="compare-item-info">
+
+                <h3>${product.name}</h3>
+
+                <strong>${product.price}</strong>
+
+            </div>
+
+            <button
+                class="remove-compare"
+                data-index="${index}"
+            >
+                <i class="fa-solid fa-trash"></i>
+            </button>
+
+        `;
+
+
+        compareItems.appendChild(item);
+
+    });
+
+
+    // REMOVE FROM COMPARE
+
+    const removeButtons =
+        document.querySelectorAll(".remove-compare");
+
+
+    removeButtons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            const index = Number(button.dataset.index);
+
+            compareProducts.splice(index, 1);
+
+            updateCompare();
+
+            updateCompareButtons();
+
+        });
+
+    });
+
+}
+
+
+// RESET COMPARE BUTTONS
+
+function updateCompareButtons() {
+
+    compareButtons.forEach((button) => {
+
+        const productCard =
+            button.closest(".product-card");
+
+        const productName =
+            productCard.querySelector(".product-info h3").textContent;
+
+
+        const exists = compareProducts.some(
+            product => product.name === productName
+        );
+
+
+        button.classList.toggle("active", exists);
+
+    });
+
+}
