@@ -165,20 +165,65 @@
 </div>
 
 <!-- compare panel -->
+<!-- ================= PROFESSIONAL COMPARE PANEL ================= -->
+
 <div class="compare-panel">
 
     <div class="compare-header">
-        <h2>Compare Products</h2>
 
-        <button class="compare-close">
+        <div>
+            <span class="compare-label">PRODUCT COMPARISON</span>
+            <h2>Compare Products</h2>
+        </div>
+
+        <button class="compare-close" aria-label="Close compare">
             <i class="fa-solid fa-xmark"></i>
         </button>
+
     </div>
 
-    <div class="compare-items">
-        <p class="empty-compare">
-            No products to compare.
-        </p>
+
+    <div class="compare-content">
+
+        <!-- EMPTY STATE -->
+        <div class="empty-compare">
+
+            <div class="empty-compare-icon">
+                <i class="fa-solid fa-code-compare"></i>
+            </div>
+
+            <h3>No Products to Compare</h3>
+
+            <p>
+                Add products from the shop to compare
+                their features and prices.
+            </p>
+
+        </div>
+
+
+        <!-- COMPARISON TABLE -->
+
+        <div class="comparison-table">
+
+            <!-- PRODUCT COLUMNS WILL BE ADDED BY JS -->
+
+        </div>
+
+    </div>
+
+
+    <div class="compare-footer">
+
+        <span class="compare-count">
+            0 products selected
+        </span>
+
+        <button class="clear-compare">
+            <i class="fa-solid fa-trash"></i>
+            Clear All
+        </button>
+
     </div>
 
 </div>
