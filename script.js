@@ -1,48 +1,48 @@
-const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
-const menuIcon = menuToggle.querySelector("i");
+// const menuToggle = document.querySelector(".menu-toggle");
+// const navLinks = document.querySelector(".nav-links");
+// const menuIcon = menuToggle.querySelector("i");
 
-menuToggle.addEventListener("click", () => {
+// menuToggle.addEventListener("click", () => {
 
-    navLinks.classList.toggle("active");
-    menuToggle.classList.toggle("active");
+//     navLinks.classList.toggle("active");
+//     menuToggle.classList.toggle("active");
 
-    if (navLinks.classList.contains("active")) {
+//     if (navLinks.classList.contains("active")) {
 
-        menuIcon.classList.remove("fa-bars");
-        menuIcon.classList.add("fa-xmark");
+//         menuIcon.classList.remove("fa-bars");
+//         menuIcon.classList.add("fa-xmark");
 
-        menuToggle.setAttribute("aria-label", "Close menu");
+//         menuToggle.setAttribute("aria-label", "Close menu");
 
-    } else {
+//     } else {
 
-        menuIcon.classList.remove("fa-xmark");
-        menuIcon.classList.add("fa-bars");
+//         menuIcon.classList.remove("fa-xmark");
+//         menuIcon.classList.add("fa-bars");
 
-        menuToggle.setAttribute("aria-label", "Open menu");
-    }
+//         menuToggle.setAttribute("aria-label", "Open menu");
+//     }
 
-});
+// });
 
-// Close mobile menu after clicking a navigation link
+// // Close mobile menu after clicking a navigation link
 
-const navItems = document.querySelectorAll(".nav-links a");
+// const navItems = document.querySelectorAll(".nav-links a");
 
-navItems.forEach((item) => {
+// navItems.forEach((item) => {
 
-    item.addEventListener("click", () => {
+//     item.addEventListener("click", () => {
 
-        navLinks.classList.remove("active");
-        menuToggle.classList.remove("active");
+//         navLinks.classList.remove("active");
+//         menuToggle.classList.remove("active");
 
-        menuIcon.classList.remove("fa-xmark");
-        menuIcon.classList.add("fa-bars");
+//         menuIcon.classList.remove("fa-xmark");
+//         menuIcon.classList.add("fa-bars");
 
-        menuToggle.setAttribute("aria-label", "Open menu");
+//         menuToggle.setAttribute("aria-label", "Open menu");
 
-    });
+//     });
 
-});
+// });
 
 
 const menuToggle = document.querySelector(".menu-toggle");

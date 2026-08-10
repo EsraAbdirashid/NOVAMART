@@ -1468,4 +1468,14 @@ section{
 
 }
 
+.nav-links.active {
+    display: flex;
+}
 
+.nav-links {
+    display: none;
+}
+
+.nav-links.active {
+    display: flex;
+}
