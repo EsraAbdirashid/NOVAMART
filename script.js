@@ -978,12 +978,15 @@ let compareProducts = [];
 
 const compareButtons = document.querySelectorAll(".compare-product");
 const comparePanel = document.querySelector(".compare-panel");
-const compareItems = document.querySelector(".compare-items");
-const compareOverlay = document.querySelector(".compare-overlay");
+const comparisonTable = document.querySelector(".comparison-table");
 const compareClose = document.querySelector(".compare-close");
+const clearCompare = document.querySelector(".clear-compare");
+const compareCount = document.querySelector(".compare-count");
+const emptyCompare = document.querySelector(".empty-compare");
 
 
-// ADD PRODUCT TO COMPARE
+// ================= ADD TO COMPARE =================
+
 compareButtons.forEach((button) => {
 
     button.addEventListener("click", () => {
@@ -999,24 +1002,32 @@ compareButtons.forEach((button) => {
         const productImage =
             productCard.querySelector(".product-image img").src;
 
-        // Prevent duplicate product
-        const alreadyCompared = compareProducts.some(
+
+        // CHECK DUPLICATE
+
+        const alreadyAdded = compareProducts.some(
             product => product.name === productName
         );
 
-        if (alreadyCompared) {
-            openComparePanel();
+        if (alreadyAdded) {
+            openCompare();
             return;
         }
 
-        // Maximum 3 products
+
+        // MAXIMUM 3 PRODUCTS
+
         if (compareProducts.length >= 3) {
 
             alert("You can compare up to 3 products.");
 
-            openComparePanel();
+            openCompare();
+
             return;
         }
+
+
+        // ADD PRODUCT
 
         compareProducts.push({
             name: productName,
@@ -1024,9 +1035,10 @@ compareButtons.forEach((button) => {
             image: productImage
         });
 
+
         updateCompare();
 
-        openComparePanel();
+        openCompare();
 
     });
 
@@ -1037,36 +1049,53 @@ compareButtons.forEach((button) => {
 
 function updateCompare() {
 
-    compareItems.innerHTML = "";
+    comparisonTable.innerHTML = "";
+
+
+    // EMPTY STATE
 
     if (compareProducts.length === 0) {
 
-        compareItems.innerHTML = `
-            <div class="empty-compare">
-                <i class="fa-solid fa-code-compare"></i>
-                <p>No products selected for comparison.</p>
-            </div>
-        `;
+        emptyCompare.style.display = "block";
+
+        compareCount.textContent =
+            "0 products selected";
 
         return;
     }
 
 
+    emptyCompare.style.display = "none";
+
+
+    // COUNT
+
+    compareCount.textContent =
+        `${compareProducts.length} product${compareProducts.length > 1 ? "s" : ""} selected`;
+
+
+    // CREATE PRODUCT COLUMNS
+
     compareProducts.forEach((product, index) => {
 
-        const item = document.createElement("div");
+        const column = document.createElement("div");
 
-        item.classList.add("compare-card");
+        column.classList.add("comparison-product");
 
-        item.innerHTML = `
+
+        column.innerHTML = `
 
             <button
                 class="remove-compare"
-                data-index="${index}">
+                data-index="${index}"
+                aria-label="Remove product">
+
                 <i class="fa-solid fa-xmark"></i>
+
             </button>
 
-            <div class="compare-product-image">
+
+            <div class="comparison-image">
 
                 <img
                     src="${product.image}"
@@ -1074,48 +1103,58 @@ function updateCompare() {
 
             </div>
 
+
             <h3>${product.name}</h3>
 
-            <strong>${product.price}</strong>
 
-            <div class="compare-info">
+            <strong class="comparison-price">
+                ${product.price}
+            </strong>
 
-                <p>
+
+            <div class="comparison-details">
+
+                <div>
                     <span>Rating</span>
                     <b>★★★★★</b>
-                </p>
+                </div>
 
-                <p>
+
+                <div>
                     <span>Availability</span>
-                    <b class="available">
+                    <b class="in-stock">
                         In Stock
                     </b>
-                </p>
+                </div>
 
-                <p>
+
+                <div>
                     <span>Quality</span>
                     <b>Premium</b>
-                </p>
+                </div>
 
             </div>
 
         `;
 
-        compareItems.appendChild(item);
+
+        comparisonTable.appendChild(column);
 
     });
 
 
-    // REMOVE PRODUCT FROM COMPARE
+    // ================= REMOVE PRODUCT =================
 
     const removeButtons =
         document.querySelectorAll(".remove-compare");
+
 
     removeButtons.forEach((button) => {
 
         button.addEventListener("click", () => {
 
-            const index = Number(button.dataset.index);
+            const index =
+                Number(button.dataset.index);
 
             compareProducts.splice(index, 1);
 
@@ -1130,30 +1169,22 @@ function updateCompare() {
 
 // ================= OPEN COMPARE =================
 
-function openComparePanel() {
+function openCompare() {
 
     if (!comparePanel) return;
 
     comparePanel.classList.add("active");
-
-    if (compareOverlay) {
-        compareOverlay.classList.add("active");
-    }
 
 }
 
 
 // ================= CLOSE COMPARE =================
 
-function closeComparePanel() {
+function closeCompare() {
 
-    if (comparePanel) {
-        comparePanel.classList.remove("active");
-    }
+    if (!comparePanel) return;
 
-    if (compareOverlay) {
-        compareOverlay.classList.remove("active");
-    }
+    comparePanel.classList.remove("active");
 
 }
 
@@ -1162,26 +1193,17 @@ if (compareClose) {
 
     compareClose.addEventListener(
         "click",
-        closeComparePanel
+        closeCompare
     );
 
 }
 
 
-if (compareOverlay) {
-
-    compareOverlay.addEventListener(
-        "click",
-        closeComparePanel
-    );
-
-}
-
-
-// ================= COMPARE NAVBAR BUTTON =================
+// ================= NAVBAR COMPARE =================
 
 const compareNav =
     document.querySelector(".compare");
+
 
 if (compareNav) {
 
@@ -1191,7 +1213,22 @@ if (compareNav) {
 
         updateCompare();
 
-        openComparePanel();
+        openCompare();
+
+    });
+
+}
+
+
+// ================= CLEAR ALL =================
+
+if (clearCompare) {
+
+    clearCompare.addEventListener("click", () => {
+
+        compareProducts = [];
+
+        updateCompare();
 
     });
 
