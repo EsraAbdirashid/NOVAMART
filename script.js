@@ -1,4 +1,11 @@
-// ================= MOBILE MENU =================
+// ======================================================
+// NOVAMART - MAIN JAVASCRIPT
+// ======================================================
+
+
+// ======================================================
+// MOBILE MENU
+// ======================================================
 
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
@@ -25,7 +32,9 @@ if (menuToggle && navLinks) {
             menuIcon.classList.add("fa-bars");
 
             menuToggle.setAttribute("aria-label", "Open menu");
+
         }
+
     });
 
 
@@ -50,9 +59,10 @@ if (menuToggle && navLinks) {
 }
 
 
-// ================= CART =================
+// ======================================================
+// CART
+// ======================================================
 
-let cartCount = 0;
 let cartProducts = [];
 
 const cartButton = document.querySelector(".cart");
@@ -67,7 +77,9 @@ const cartItems = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(".cart-total strong");
 
 
-// ================= OPEN CART =================
+// ======================================================
+// OPEN CART
+// ======================================================
 
 if (cartButton && cartPanel && cartOverlay) {
 
@@ -83,7 +95,9 @@ if (cartButton && cartPanel && cartOverlay) {
 }
 
 
-// ================= CLOSE CART =================
+// ======================================================
+// CLOSE CART
+// ======================================================
 
 function closeCart() {
 
@@ -97,16 +111,20 @@ function closeCart() {
 
 }
 
+
 if (cartClose) {
     cartClose.addEventListener("click", closeCart);
 }
+
 
 if (cartOverlay) {
     cartOverlay.addEventListener("click", closeCart);
 }
 
 
-// ================= ADD TO CART =================
+// ======================================================
+// ADD TO CART
+// ======================================================
 
 addToCartButtons.forEach((button) => {
 
@@ -116,17 +134,23 @@ addToCartButtons.forEach((button) => {
 
         if (!productCard) return;
 
-        const productName =
-            productCard.querySelector(".product-info h3").textContent;
 
-        const productPrice =
-            productCard.querySelector(".product-bottom strong").textContent;
+        const productName =
+            productCard.querySelector(".product-info h3").textContent.trim();
+
+
+        const productPriceText =
+            productCard.querySelector(".product-bottom strong").textContent.trim();
+
 
         const productImage =
             productCard.querySelector(".product-image img").src;
 
+
         const price = parseFloat(
-            productPrice.replace("$", "").replace(",", "")
+            productPriceText
+                .replace("$", "")
+                .replace(",", "")
         );
 
 
@@ -137,13 +161,6 @@ addToCartButtons.forEach((button) => {
             image: productImage
 
         });
-
-
-        cartCount = cartProducts.length;
-
-        if (cartCountElement) {
-            cartCountElement.textContent = cartCount;
-        }
 
 
         updateCart();
@@ -164,13 +181,17 @@ addToCartButtons.forEach((button) => {
 });
 
 
-// ================= UPDATE CART =================
+// ======================================================
+// UPDATE CART
+// ======================================================
 
 function updateCart() {
 
-    if (!cartItems || !cartTotal) return;
+    if (!cartItems) return;
+
 
     cartItems.innerHTML = "";
+
 
     let total = 0;
 
@@ -200,15 +221,15 @@ function updateCart() {
                     $${product.price.toFixed(2)}
                 </strong>
 
-            </div>
+                <button
+                    class="remove-cart-item"
+                    data-index="${index}"
+                    title="Remove"
+                >
+                    <i class="fa-solid fa-trash"></i>
+                </button>
 
-            <button
-                class="remove-cart-item"
-                data-index="${index}"
-                title="Remove"
-            >
-                <i class="fa-solid fa-trash"></i>
-            </button>
+            </div>
 
         `;
 
@@ -218,8 +239,22 @@ function updateCart() {
     });
 
 
-    cartTotal.textContent =
-        `$${total.toFixed(2)}`;
+    if (cartTotal) {
+
+        cartTotal.textContent =
+            `$${total.toFixed(2)}`;
+
+    }
+
+
+    // CART COUNT
+
+    if (cartCountElement) {
+
+        cartCountElement.textContent =
+            cartProducts.length;
+
+    }
 
 
     // EMPTY CART
@@ -237,7 +272,7 @@ function updateCart() {
     }
 
 
-    // REMOVE PRODUCT
+    // REMOVE BUTTONS
 
     const removeButtons =
         document.querySelectorAll(".remove-cart-item");
@@ -250,13 +285,9 @@ function updateCart() {
             const index =
                 Number(button.dataset.index);
 
+
             cartProducts.splice(index, 1);
 
-            cartCount = cartProducts.length;
-
-            if (cartCountElement) {
-                cartCountElement.textContent = cartCount;
-            }
 
             updateCart();
 
@@ -267,17 +298,27 @@ function updateCart() {
 }
 
 
-// ================= CHECKOUT =================
+// ======================================================
+// CHECKOUT
+// ======================================================
 
-const checkoutBtn = document.querySelector(".checkout-btn");
-const checkoutModal = document.querySelector("#checkoutModal");
-const checkoutClose = document.querySelector("#checkoutClose");
-const checkoutOk = document.querySelector("#checkoutOk");
+const checkoutBtn =
+    document.querySelector(".checkout-btn");
+
+const checkoutModal =
+    document.querySelector("#checkoutModal");
+
+const checkoutClose =
+    document.querySelector("#checkoutClose");
+
+const checkoutOk =
+    document.querySelector("#checkoutOk");
 
 
 if (checkoutBtn && checkoutModal) {
 
     checkoutBtn.addEventListener("click", () => {
+
 
         // EMPTY CART
 
@@ -286,40 +327,49 @@ if (checkoutBtn && checkoutModal) {
             checkoutModal.querySelector("h2").textContent =
                 "Your Cart Is Empty!";
 
+
             checkoutModal.querySelector("p").innerHTML =
                 "Please add a product to your cart before checkout.";
+
 
             checkoutModal.querySelector(
                 ".checkout-success-icon"
             ).innerHTML =
                 '<i class="fa-solid fa-cart-shopping"></i>';
 
+
             if (checkoutOk) {
                 checkoutOk.textContent = "OK";
             }
 
+
             checkoutModal.classList.add("active");
 
             return;
+
         }
 
 
-        // CART HAS PRODUCTS
+        // ORDER CONFIRMED
 
         checkoutModal.querySelector("h2").textContent =
             "Order Confirmed!";
 
+
         checkoutModal.querySelector("p").innerHTML =
             'Thank you for shopping with <strong>NovaMart</strong>. Your order has been successfully placed.';
+
 
         checkoutModal.querySelector(
             ".checkout-success-icon"
         ).innerHTML =
             '<i class="fa-solid fa-check"></i>';
 
+
         if (checkoutOk) {
             checkoutOk.textContent = "OK";
         }
+
 
         checkoutModal.classList.add("active");
 
@@ -328,7 +378,9 @@ if (checkoutBtn && checkoutModal) {
 }
 
 
-if (checkoutClose) {
+// CLOSE CHECKOUT
+
+if (checkoutClose && checkoutModal) {
 
     checkoutClose.addEventListener("click", () => {
 
@@ -339,7 +391,7 @@ if (checkoutClose) {
 }
 
 
-if (checkoutOk) {
+if (checkoutOk && checkoutModal) {
 
     checkoutOk.addEventListener("click", () => {
 
@@ -350,27 +402,38 @@ if (checkoutOk) {
 }
 
 
-// ================= PRODUCT SEARCH =================
+// ======================================================
+// PRODUCT SEARCH
+// ======================================================
 
-const searchInput = document.querySelector("#searchInput");
-const searchButton = document.querySelector("#searchButton");
-const productsGrid = document.querySelector(".products-grid");
+const searchInput =
+    document.querySelector("#searchInput");
+
+const searchButton =
+    document.querySelector("#searchButton");
+
+const productsGrid =
+    document.querySelector(".products-grid");
 
 const productCards =
     Array.from(document.querySelectorAll(".product-card"));
 
 
+// SEARCH FUNCTION
+
 function searchProducts() {
 
     if (!searchInput) return;
 
+
     const searchValue =
         searchInput.value.trim().toLowerCase();
+
 
     let foundProducts = 0;
 
 
-    // SHOW ALL PRODUCTS
+    // SHOW ALL
 
     if (searchValue === "") {
 
@@ -380,9 +443,11 @@ function searchProducts() {
 
         });
 
+
         removeNoProductsMessage();
 
         return;
+
     }
 
 
@@ -390,13 +455,10 @@ function searchProducts() {
 
     productCards.forEach((card) => {
 
-        const nameElement =
-            card.querySelector(".product-info h3");
-
-        if (!nameElement) return;
-
         const productName =
-            nameElement.textContent.toLowerCase();
+            card.querySelector(".product-info h3")
+                .textContent
+                .toLowerCase();
 
 
         if (productName.includes(searchValue)) {
@@ -413,6 +475,8 @@ function searchProducts() {
 
     });
 
+
+    // NO PRODUCT
 
     if (foundProducts === 0) {
 
@@ -437,6 +501,7 @@ if (searchButton) {
 
         const productsSection =
             document.querySelector("#products");
+
 
         if (productsSection) {
 
@@ -463,6 +528,7 @@ if (searchInput) {
 
             const productsSection =
                 document.querySelector("#products");
+
 
             if (productsSection) {
 
@@ -492,14 +558,19 @@ if (searchInput) {
 
 function showNoProductsMessage() {
 
+    if (!productsGrid || !searchInput) return;
+
+
     removeNoProductsMessage();
 
-    if (!productsGrid) return;
 
     const message =
         document.createElement("div");
 
-    message.className = "no-products";
+
+    message.className =
+        "no-products";
+
 
     message.innerHTML = `
 
@@ -522,7 +593,8 @@ function showNoProductsMessage() {
     productsGrid.appendChild(message);
 
 
-    message.querySelector(".clear-search")
+    message
+        .querySelector(".clear-search")
         .addEventListener("click", () => {
 
             searchInput.value = "";
@@ -536,12 +608,13 @@ function showNoProductsMessage() {
 }
 
 
-// REMOVE NO PRODUCTS MESSAGE
+// REMOVE MESSAGE
 
 function removeNoProductsMessage() {
 
     const message =
         document.querySelector(".no-products");
+
 
     if (message) {
 
@@ -552,7 +625,9 @@ function removeNoProductsMessage() {
 }
 
 
-// ================= WISHLIST =================
+// ======================================================
+// WISHLIST
+// ======================================================
 
 const wishlistBtn =
     document.querySelector("#wishlistBtn");
@@ -579,7 +654,9 @@ const wishlistButtons =
 let wishlistProducts = [];
 
 
-// ================= OPEN WISHLIST =================
+// ======================================================
+// OPEN WISHLIST
+// ======================================================
 
 if (wishlistBtn && wishlistPanel && wishlistOverlay) {
 
@@ -596,35 +673,51 @@ if (wishlistBtn && wishlistPanel && wishlistOverlay) {
 }
 
 
-// ================= CLOSE WISHLIST =================
+// ======================================================
+// CLOSE WISHLIST
+// ======================================================
 
-if (wishlistClose) {
+function closeWishlist() {
 
-    wishlistClose.addEventListener("click", () => {
+    if (wishlistPanel) {
 
         wishlistPanel.classList.remove("active");
 
+    }
+
+
+    if (wishlistOverlay) {
+
         wishlistOverlay.classList.remove("active");
 
-    });
+    }
+
+}
+
+
+if (wishlistClose) {
+
+    wishlistClose.addEventListener(
+        "click",
+        closeWishlist
+    );
 
 }
 
 
 if (wishlistOverlay) {
 
-    wishlistOverlay.addEventListener("click", () => {
-
-        wishlistPanel.classList.remove("active");
-
-        wishlistOverlay.classList.remove("active");
-
-    });
+    wishlistOverlay.addEventListener(
+        "click",
+        closeWishlist
+    );
 
 }
 
 
-// ================= ADD TO WISHLIST =================
+// ======================================================
+// ADD TO WISHLIST
+// ======================================================
 
 wishlistButtons.forEach((button) => {
 
@@ -633,23 +726,28 @@ wishlistButtons.forEach((button) => {
         const productCard =
             button.closest(".product-card");
 
+
         if (!productCard) return;
 
 
         const productName =
-            productCard.querySelector(
-                ".product-info h3"
-            ).textContent;
+            productCard
+                .querySelector(".product-info h3")
+                .textContent
+                .trim();
+
 
         const productPrice =
-            productCard.querySelector(
-                ".product-bottom strong"
-            ).textContent;
+            productCard
+                .querySelector(".product-bottom strong")
+                .textContent
+                .trim();
+
 
         const productImage =
-            productCard.querySelector(
-                ".product-image img"
-            ).src;
+            productCard
+                .querySelector(".product-image img")
+                .src;
 
 
         const alreadyExists =
@@ -659,6 +757,8 @@ wishlistButtons.forEach((button) => {
             );
 
 
+        // REMOVE
+
         if (alreadyExists) {
 
             wishlistProducts =
@@ -667,9 +767,15 @@ wishlistButtons.forEach((button) => {
                         product.name !== productName
                 );
 
+
             button.classList.remove("active");
 
-        } else {
+        }
+
+
+        // ADD
+
+        else {
 
             wishlistProducts.push({
 
@@ -678,6 +784,7 @@ wishlistButtons.forEach((button) => {
                 image: productImage
 
             });
+
 
             button.classList.add("active");
 
@@ -691,11 +798,14 @@ wishlistButtons.forEach((button) => {
 });
 
 
-// ================= UPDATE WISHLIST =================
+// ======================================================
+// UPDATE WISHLIST
+// ======================================================
 
 function updateWishlist() {
 
     if (!wishlistItems) return;
+
 
     wishlistItems.innerHTML = "";
 
@@ -721,6 +831,7 @@ function updateWishlist() {
         `;
 
         return;
+
     }
 
 
@@ -731,7 +842,10 @@ function updateWishlist() {
         const item =
             document.createElement("div");
 
-        item.classList.add("wishlist-item");
+
+        item.classList.add(
+            "wishlist-item"
+        );
 
 
         item.innerHTML = `
@@ -745,9 +859,7 @@ function updateWishlist() {
 
                 <h3>${product.name}</h3>
 
-                <strong>
-                    ${product.price}
-                </strong>
+                <strong>${product.price}</strong>
 
             </div>
 
@@ -757,9 +869,7 @@ function updateWishlist() {
                 data-index="${index}"
                 title="Add to cart"
             >
-
                 <i class="fa-solid fa-cart-plus"></i>
-
             </button>
 
 
@@ -768,9 +878,7 @@ function updateWishlist() {
                 data-index="${index}"
                 title="Remove"
             >
-
                 <i class="fa-solid fa-trash"></i>
-
             </button>
 
         `;
@@ -783,147 +891,232 @@ function updateWishlist() {
 
     // REMOVE WISHLIST
 
-    const removeButtons =
-        document.querySelectorAll(
-            ".remove-wishlist-item"
-        );
+    document
+        .querySelectorAll(".remove-wishlist-item")
+        .forEach((button) => {
+
+            button.addEventListener("click", () => {
+
+                const index =
+                    Number(button.dataset.index);
 
 
-    removeButtons.forEach((button) => {
-
-        button.addEventListener("click", () => {
-
-            const index =
-                Number(button.dataset.index);
-
-            const removedProduct =
-                wishlistProducts[index];
-
-            wishlistProducts.splice(index, 1);
+                const removedProduct =
+                    wishlistProducts[index];
 
 
-            // RESET HEART
+                wishlistProducts.splice(index, 1);
 
-            wishlistButtons.forEach((heart) => {
 
-                const card =
-                    heart.closest(".product-card");
+                // RESET HEART
 
-                if (!card) return;
+                wishlistButtons.forEach((heart) => {
 
-                const name =
-                    card.querySelector(
-                        ".product-info h3"
-                    ).textContent;
+                    const card =
+                        heart.closest(".product-card");
 
-                if (name === removedProduct.name) {
 
-                    heart.classList.remove("active");
+                    if (!card) return;
 
-                }
+
+                    const name =
+                        card.querySelector(
+                            ".product-info h3"
+                        ).textContent.trim();
+
+
+                    if (
+                        name === removedProduct.name
+                    ) {
+
+                        heart.classList.remove(
+                            "active"
+                        );
+
+                    }
+
+                });
+
+
+                updateWishlist();
 
             });
 
-
-            updateWishlist();
-
         });
-
-    });
 
 
     // ADD WISHLIST PRODUCT TO CART
 
-    const addCartButtons =
-        document.querySelectorAll(
-            ".wishlist-add-cart"
-        );
+    document
+        .querySelectorAll(".wishlist-add-cart")
+        .forEach((button) => {
+
+            button.addEventListener("click", () => {
+
+                const index =
+                    Number(button.dataset.index);
 
 
-    addCartButtons.forEach((button) => {
-
-        button.addEventListener("click", () => {
-
-            const index =
-                Number(button.dataset.index);
-
-            const product =
-                wishlistProducts[index];
-
-            if (!product) return;
+                const product =
+                    wishlistProducts[index];
 
 
-            const cards =
-                document.querySelectorAll(
-                    ".product-card"
-                );
+                productCards.forEach((card) => {
 
-
-            cards.forEach((card) => {
-
-                const name =
-                    card.querySelector(
-                        ".product-info h3"
-                    ).textContent;
-
-
-                if (name === product.name) {
-
-                    const cartButton =
+                    const name =
                         card.querySelector(
-                            ".add-to-cart"
-                        );
+                            ".product-info h3"
+                        ).textContent.trim();
 
-                    if (cartButton) {
-                        cartButton.click();
+
+                    if (name === product.name) {
+
+                        const cartBtn =
+                            card.querySelector(
+                                ".add-to-cart"
+                            );
+
+
+                        if (cartBtn) {
+
+                            cartBtn.click();
+
+                        }
+
                     }
 
-                }
+                });
 
             });
 
         });
+
+}
+
+
+// ======================================================
+// COMPARE
+// ======================================================
+
+// IMPORTANT:
+// Waxaan isticmaalay .compare-product iyo .compare-btn
+// labadaba si HTML-kaaga hadda jira uu u shaqeeyo.
+
+const compareButtons =
+    document.querySelectorAll(
+        ".compare-product, .compare-btn"
+    );
+
+
+const compareNav =
+    document.querySelector(".compare");
+
+
+const comparePanel =
+    document.querySelector(".compare-panel");
+
+
+const compareClose =
+    document.querySelector(".compare-close");
+
+
+const comparisonTable =
+    document.querySelector(".comparison-table");
+
+
+const clearCompare =
+    document.querySelector(".clear-compare");
+
+
+const compareCount =
+    document.querySelector(".compare-count");
+
+
+const emptyCompare =
+    document.querySelector(".empty-compare");
+
+
+let compareProducts = [];
+
+
+// ======================================================
+// OPEN COMPARE
+// ======================================================
+
+function openCompare() {
+
+    if (!comparePanel) return;
+
+
+    comparePanel.classList.add("active");
+
+
+    if (cartOverlay) {
+
+        cartOverlay.classList.add("active");
+
+    }
+
+}
+
+
+// ======================================================
+// CLOSE COMPARE
+// ======================================================
+
+function closeCompare() {
+
+    if (!comparePanel) return;
+
+
+    comparePanel.classList.remove("active");
+
+
+    if (cartOverlay) {
+
+        cartOverlay.classList.remove("active");
+
+    }
+
+}
+
+
+// ======================================================
+// NAVBAR COMPARE BUTTON
+// ======================================================
+
+if (compareNav) {
+
+    compareNav.addEventListener("click", (event) => {
+
+        event.preventDefault();
+
+        updateCompare();
+
+        openCompare();
 
     });
 
 }
 
 
-// ================= COMPARE =================
-// IMPORTANT:
-// Compare code halkaan KALIYA ayuu ku jiraa.
-// Ha ku darin compare code kale.
+// ======================================================
+// CLOSE COMPARE
+// ======================================================
 
-// VARIABLES
+if (compareClose) {
 
-let compareProducts = [];
+    compareClose.addEventListener(
+        "click",
+        closeCompare
+    );
 
-const compareButtons =
-    document.querySelectorAll(".compare-product");
-
-const comparePanel =
-    document.querySelector(".compare-panel");
-
-const comparisonTable =
-    document.querySelector(".comparison-table");
-
-const compareClose =
-    document.querySelector(".compare-close");
-
-const clearCompare =
-    document.querySelector(".clear-compare");
-
-const compareCount =
-    document.querySelector(".compare-count");
-
-const emptyCompare =
-    document.querySelector(".empty-compare");
-
-const compareNav =
-    document.querySelector(".compare");
+}
 
 
-// ================= ADD TO COMPARE =================
+// ======================================================
+// ADD PRODUCT TO COMPARE
+// ======================================================
 
 compareButtons.forEach((button) => {
 
@@ -932,33 +1125,40 @@ compareButtons.forEach((button) => {
         const productCard =
             button.closest(".product-card");
 
+
         if (!productCard) return;
 
 
         const productName =
-            productCard.querySelector(
-                ".product-info h3"
-            ).textContent;
+            productCard
+                .querySelector(".product-info h3")
+                .textContent
+                .trim();
+
 
         const productPrice =
-            productCard.querySelector(
-                ".product-bottom strong"
-            ).textContent;
+            productCard
+                .querySelector(".product-bottom strong")
+                .textContent
+                .trim();
+
 
         const productImage =
-            productCard.querySelector(
-                ".product-image img"
-            ).src;
+            productCard
+                .querySelector(".product-image img")
+                .src;
 
 
         // CHECK DUPLICATE
 
         const alreadyAdded =
             compareProducts.some(
-                product =>
+                (product) =>
                     product.name === productName
             );
 
+
+        // IF ALREADY ADDED
 
         if (alreadyAdded) {
 
@@ -969,7 +1169,7 @@ compareButtons.forEach((button) => {
         }
 
 
-        // MAX 3 PRODUCTS
+        // MAXIMUM 3
 
         if (compareProducts.length >= 3) {
 
@@ -984,7 +1184,7 @@ compareButtons.forEach((button) => {
         }
 
 
-        // ADD
+        // ADD PRODUCT
 
         compareProducts.push({
 
@@ -1000,6 +1200,9 @@ compareButtons.forEach((button) => {
 
         updateCompare();
 
+
+        // OPEN PANEL
+
         openCompare();
 
     });
@@ -1007,11 +1210,14 @@ compareButtons.forEach((button) => {
 });
 
 
-// ================= UPDATE COMPARE =================
+// ======================================================
+// UPDATE COMPARE
+// ======================================================
 
 function updateCompare() {
 
     if (!comparisonTable) return;
+
 
     comparisonTable.innerHTML = "";
 
@@ -1021,8 +1227,12 @@ function updateCompare() {
     if (compareProducts.length === 0) {
 
         if (emptyCompare) {
-            emptyCompare.style.display = "block";
+
+            emptyCompare.style.display =
+                "block";
+
         }
+
 
         if (compareCount) {
 
@@ -1031,16 +1241,21 @@ function updateCompare() {
 
         }
 
+
         updateCompareButtons();
 
         return;
+
     }
 
 
     // HIDE EMPTY
 
     if (emptyCompare) {
-        emptyCompare.style.display = "none";
+
+        emptyCompare.style.display =
+            "none";
+
     }
 
 
@@ -1049,19 +1264,18 @@ function updateCompare() {
     if (compareCount) {
 
         compareCount.textContent =
-            `${compareProducts.length} product${
-                compareProducts.length > 1 ? "s" : ""
-            } selected`;
+            `${compareProducts.length} product${compareProducts.length > 1 ? "s" : ""} selected`;
 
     }
 
 
-    // CREATE COMPARISON COLUMNS
+    // CREATE PRODUCT COLUMNS
 
     compareProducts.forEach((product, index) => {
 
         const column =
             document.createElement("div");
+
 
         column.classList.add(
             "comparison-product"
@@ -1076,9 +1290,7 @@ function updateCompare() {
                 aria-label="Remove product"
                 title="Remove"
             >
-
                 <i class="fa-solid fa-xmark"></i>
-
             </button>
 
 
@@ -1135,28 +1347,31 @@ function updateCompare() {
     });
 
 
-    // REMOVE PRODUCT
+    // REMOVE PRODUCT FROM COMPARE
 
-    const removeButtons =
-        comparisonTable.querySelectorAll(
-            ".remove-compare"
-        );
+    document
+        .querySelectorAll(".remove-compare")
+        .forEach((button) => {
+
+            button.addEventListener("click", () => {
+
+                const index =
+                    Number(button.dataset.index);
 
 
-    removeButtons.forEach((button) => {
+                compareProducts.splice(
+                    index,
+                    1
+                );
 
-        button.addEventListener("click", () => {
 
-            const index =
-                Number(button.dataset.index);
+                updateCompare();
 
-            compareProducts.splice(index, 1);
+                updateCompareButtons();
 
-            updateCompare();
+            });
 
         });
-
-    });
 
 
     updateCompareButtons();
@@ -1164,7 +1379,9 @@ function updateCompare() {
 }
 
 
-// ================= RESET COMPARE BUTTONS =================
+// ======================================================
+// RESET COMPARE BUTTONS
+// ======================================================
 
 function updateCompareButtons() {
 
@@ -1173,19 +1390,21 @@ function updateCompareButtons() {
         const productCard =
             button.closest(".product-card");
 
+
         if (!productCard) return;
 
 
-        const name =
-            productCard.querySelector(
-                ".product-info h3"
-            ).textContent;
+        const productName =
+            productCard
+                .querySelector(".product-info h3")
+                .textContent
+                .trim();
 
 
         const exists =
             compareProducts.some(
-                product =>
-                    product.name === name
+                (product) =>
+                    product.name === productName
             );
 
 
@@ -1199,91 +1418,90 @@ function updateCompareButtons() {
 }
 
 
-// ================= OPEN COMPARE =================
-
-function openCompare() {
-
-    if (!comparePanel) return;
-
-    comparePanel.classList.add("active");
-
-}
-
-
-// ================= CLOSE COMPARE =================
-
-function closeCompare() {
-
-    if (!comparePanel) return;
-
-    comparePanel.classList.remove("active");
-
-}
-
-
-// ================= COMPARE CLOSE BUTTON =================
-
-if (compareClose) {
-
-    compareClose.addEventListener(
-        "click",
-        closeCompare
-    );
-
-}
-
-
-// ================= NAVBAR COMPARE =================
-
-if (compareNav) {
-
-    compareNav.addEventListener(
-        "click",
-        (event) => {
-
-            event.preventDefault();
-
-            updateCompare();
-
-            openCompare();
-
-        }
-    );
-
-}
-
-
-// ================= CLEAR ALL COMPARE =================
+// ======================================================
+// CLEAR ALL COMPARE
+// ======================================================
 
 if (clearCompare) {
 
-    clearCompare.addEventListener(
-        "click",
-        () => {
+    clearCompare.addEventListener("click", () => {
 
-            compareProducts = [];
+        compareProducts = [];
 
-            updateCompare();
+        updateCompare();
 
-        }
-    );
+        updateCompareButtons();
+
+    });
 
 }
 
 
-// ================= ESC KEY =================
+// ======================================================
+// CLOSE COMPARE WHEN OVERLAY IS CLICKED
+// ======================================================
 
-document.addEventListener(
-    "keydown",
-    (event) => {
+if (cartOverlay) {
 
-        if (event.key === "Escape") {
+    cartOverlay.addEventListener("click", () => {
 
-            closeCart();
+        if (
+            comparePanel &&
+            comparePanel.classList.contains("active")
+        ) {
 
             closeCompare();
 
         }
 
-    }
-);
+    });
+
+}
+
+
+// ======================================================
+// NEWSLETTER
+// ======================================================
+
+const newsletterForm =
+    document.querySelector(".newsletter-form");
+
+
+if (newsletterForm) {
+
+    newsletterForm.addEventListener(
+        "submit",
+        (event) => {
+
+            event.preventDefault();
+
+
+            const emailInput =
+                newsletterForm.querySelector(
+                    'input[type="email"]'
+                );
+
+
+            if (!emailInput) return;
+
+
+            alert(
+                "Thank you for subscribing to NovaMart!"
+            );
+
+
+            newsletterForm.reset();
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// INITIAL UPDATE
+// ======================================================
+
+updateCart();
+updateWishlist();
+updateCompare();
