@@ -971,3 +971,228 @@ function updateCompareButtons() {
     });
 
 }
+
+// ================= COMPARE PRODUCTS =================
+
+let compareProducts = [];
+
+const compareButtons = document.querySelectorAll(".compare-product");
+const comparePanel = document.querySelector(".compare-panel");
+const compareItems = document.querySelector(".compare-items");
+const compareOverlay = document.querySelector(".compare-overlay");
+const compareClose = document.querySelector(".compare-close");
+
+
+// ADD PRODUCT TO COMPARE
+compareButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        const productCard = button.closest(".product-card");
+
+        const productName =
+            productCard.querySelector(".product-info h3").textContent;
+
+        const productPrice =
+            productCard.querySelector(".product-bottom strong").textContent;
+
+        const productImage =
+            productCard.querySelector(".product-image img").src;
+
+        // Prevent duplicate product
+        const alreadyCompared = compareProducts.some(
+            product => product.name === productName
+        );
+
+        if (alreadyCompared) {
+            openComparePanel();
+            return;
+        }
+
+        // Maximum 3 products
+        if (compareProducts.length >= 3) {
+
+            alert("You can compare up to 3 products.");
+
+            openComparePanel();
+            return;
+        }
+
+        compareProducts.push({
+            name: productName,
+            price: productPrice,
+            image: productImage
+        });
+
+        updateCompare();
+
+        openComparePanel();
+
+    });
+
+});
+
+
+// ================= UPDATE COMPARE =================
+
+function updateCompare() {
+
+    compareItems.innerHTML = "";
+
+    if (compareProducts.length === 0) {
+
+        compareItems.innerHTML = `
+            <div class="empty-compare">
+                <i class="fa-solid fa-code-compare"></i>
+                <p>No products selected for comparison.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    compareProducts.forEach((product, index) => {
+
+        const item = document.createElement("div");
+
+        item.classList.add("compare-card");
+
+        item.innerHTML = `
+
+            <button
+                class="remove-compare"
+                data-index="${index}">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="compare-product-image">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}">
+
+            </div>
+
+            <h3>${product.name}</h3>
+
+            <strong>${product.price}</strong>
+
+            <div class="compare-info">
+
+                <p>
+                    <span>Rating</span>
+                    <b>★★★★★</b>
+                </p>
+
+                <p>
+                    <span>Availability</span>
+                    <b class="available">
+                        In Stock
+                    </b>
+                </p>
+
+                <p>
+                    <span>Quality</span>
+                    <b>Premium</b>
+                </p>
+
+            </div>
+
+        `;
+
+        compareItems.appendChild(item);
+
+    });
+
+
+    // REMOVE PRODUCT FROM COMPARE
+
+    const removeButtons =
+        document.querySelectorAll(".remove-compare");
+
+    removeButtons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            const index = Number(button.dataset.index);
+
+            compareProducts.splice(index, 1);
+
+            updateCompare();
+
+        });
+
+    });
+
+}
+
+
+// ================= OPEN COMPARE =================
+
+function openComparePanel() {
+
+    if (!comparePanel) return;
+
+    comparePanel.classList.add("active");
+
+    if (compareOverlay) {
+        compareOverlay.classList.add("active");
+    }
+
+}
+
+
+// ================= CLOSE COMPARE =================
+
+function closeComparePanel() {
+
+    if (comparePanel) {
+        comparePanel.classList.remove("active");
+    }
+
+    if (compareOverlay) {
+        compareOverlay.classList.remove("active");
+    }
+
+}
+
+
+if (compareClose) {
+
+    compareClose.addEventListener(
+        "click",
+        closeComparePanel
+    );
+
+}
+
+
+if (compareOverlay) {
+
+    compareOverlay.addEventListener(
+        "click",
+        closeComparePanel
+    );
+
+}
+
+
+// ================= COMPARE NAVBAR BUTTON =================
+
+const compareNav =
+    document.querySelector(".compare");
+
+if (compareNav) {
+
+    compareNav.addEventListener("click", (event) => {
+
+        event.preventDefault();
+
+        updateCompare();
+
+        openComparePanel();
+
+    });
+
+}
