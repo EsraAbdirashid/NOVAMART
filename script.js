@@ -1,3 +1,5 @@
+// ================= MOBILE MENU =================
+
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 const menuIcon = menuToggle.querySelector("i");
@@ -24,7 +26,8 @@ menuToggle.addEventListener("click", () => {
 
 });
 
-// Close mobile menu after clicking a navigation link
+
+// ================= CLOSE MOBILE MENU =================
 
 const navItems = document.querySelectorAll(".nav-links a");
 
@@ -45,18 +48,27 @@ navItems.forEach((item) => {
 });
 
 
-// ================= ADD TO CART =================
+// ================= CART ELEMENTS =================
 
-
-let cartCount = 0;
+const cartButton = document.querySelector(".cart");
+const cartPanel = document.querySelector(".cart-panel");
+const cartClose = document.querySelector(".cart-close");
+const cartOverlay = document.querySelector(".cart-overlay");
 
 const cartCountElement = document.querySelector(".cart-count");
-const addToCartButtons = document.querySelectorAll(".add-to-cart");
-
 const cartItems = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(".cart-total strong");
 
+const addToCartButtons = document.querySelectorAll(".add-to-cart");
+
+
+// ================= CART DATA =================
+
+let cartCount = 0;
 let cartProducts = [];
+
+
+// ================= ADD TO CART =================
 
 addToCartButtons.forEach((button) => {
 
@@ -89,6 +101,8 @@ addToCartButtons.forEach((button) => {
 
         updateCart();
 
+        // Button animation
+
         button.style.transform = "scale(1.15)";
 
         setTimeout(() => {
@@ -99,6 +113,8 @@ addToCartButtons.forEach((button) => {
 
 });
 
+
+// ================= UPDATE CART =================
 
 function updateCart() {
 
@@ -123,7 +139,11 @@ function updateCart() {
 
                 <strong>$${product.price.toFixed(2)}</strong>
 
-                <button class="remove-cart-item" data-index="${index}">
+                <button
+                    class="remove-cart-item"
+                    data-index="${index}"
+                    type="button"
+                >
                     <i class="fa-solid fa-trash"></i>
                 </button>
 
@@ -134,7 +154,13 @@ function updateCart() {
 
     });
 
+
+    // Update total
+
     cartTotal.textContent = `$${total.toFixed(2)}`;
+
+
+    // Empty cart
 
     if (cartProducts.length === 0) {
 
@@ -147,7 +173,7 @@ function updateCart() {
     }
 
 
-    // REMOVE PRODUCT
+    // Remove products
 
     const removeButtons =
         document.querySelectorAll(".remove-cart-item");
@@ -156,7 +182,7 @@ function updateCart() {
 
         button.addEventListener("click", () => {
 
-            const index = button.dataset.index;
+            const index = Number(button.dataset.index);
 
             cartProducts.splice(index, 1);
 
@@ -171,3 +197,38 @@ function updateCart() {
     });
 
 }
+
+
+// ================= OPEN CART =================
+
+cartButton.addEventListener("click", (e) => {
+
+    e.preventDefault();
+
+    cartPanel.classList.add("active");
+
+    cartOverlay.classList.add("active");
+
+});
+
+
+// ================= CLOSE CART =================
+
+cartClose.addEventListener("click", () => {
+
+    cartPanel.classList.remove("active");
+
+    cartOverlay.classList.remove("active");
+
+});
+
+
+// ================= CLOSE CART WITH OVERLAY =================
+
+cartOverlay.addEventListener("click", () => {
+
+    cartPanel.classList.remove("active");
+
+    cartOverlay.classList.remove("active");
+
+});
