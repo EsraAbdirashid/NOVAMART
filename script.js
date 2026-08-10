@@ -232,3 +232,31 @@ cartOverlay.addEventListener("click", () => {
     cartOverlay.classList.remove("active");
 
 });
+
+// ================= CHECKOUT =================
+
+const checkoutButton = document.querySelector(".checkout-btn");
+
+checkoutButton.addEventListener("click", () => {
+
+    if (cartProducts.length === 0) {
+
+        alert("Your cart is empty. Please add a product first.");
+
+        return;
+    }
+
+    let total = 0;
+
+    cartProducts.forEach((product) => {
+        total += product.price;
+    });
+
+    alert(
+        "Order Summary\n\n" +
+        "Items: " + cartProducts.length + "\n" +
+        "Total: $" + total.toFixed(2) + "\n\n" +
+        "Thank you for shopping with NovaMart!"
+    );
+
+});
