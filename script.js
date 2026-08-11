@@ -1196,10 +1196,8 @@ compareButtons.forEach((button) => {
 
 
         button.classList.add("active");
-
-
+        
         updateCompare();
-
 
         // OPEN PANEL
 
@@ -1209,10 +1207,7 @@ compareButtons.forEach((button) => {
 
 });
 
-
-// ======================================================
 // UPDATE COMPARE
-// ======================================================
 
 function updateCompare() {
 
@@ -1233,7 +1228,6 @@ function updateCompare() {
 
         }
 
-
         if (compareCount) {
 
             compareCount.textContent =
@@ -1247,7 +1241,6 @@ function updateCompare() {
         return;
 
     }
-
 
     // HIDE EMPTY
 
@@ -1267,7 +1260,6 @@ function updateCompare() {
             `${compareProducts.length} product${compareProducts.length > 1 ? "s" : ""} selected`;
 
     }
-
 
     // CREATE PRODUCT COLUMNS
 
