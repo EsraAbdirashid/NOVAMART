@@ -1379,9 +1379,7 @@ function updateCompare() {
 }
 
 
-// ======================================================
 // RESET COMPARE BUTTONS
-// ======================================================
 
 function updateCompareButtons() {
 
@@ -1392,7 +1390,6 @@ function updateCompareButtons() {
 
 
         if (!productCard) return;
-
 
         const productName =
             productCard
@@ -1406,7 +1403,6 @@ function updateCompareButtons() {
                     product.name === productName
             );
 
-
         button.classList.toggle(
             "active",
             exists
@@ -1416,10 +1412,7 @@ function updateCompareButtons() {
 
 }
 
-
-// ======================================================
 // CLEAR ALL COMPARE
-// ======================================================
 
 if (clearCompare) {
 
