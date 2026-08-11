@@ -1506,3 +1506,60 @@ updateWishlist();
 updateCompare();
 
 
+// ================= SPECIAL OFFER SHOP NOW =================
+
+const offerCartButtons =
+    document.querySelectorAll(".offer-cart-btn");
+
+offerCartButtons.forEach((button) => {
+
+    button.addEventListener("click", (e) => {
+
+        e.preventDefault();
+
+        const productName =
+            button.dataset.product;
+
+        const productPrice =
+            parseFloat(button.dataset.price);
+
+        const productImage =
+            button.dataset.image;
+
+
+        // ADD PRODUCT TO CART
+
+        cartProducts.push({
+
+            name: productName,
+
+            price: productPrice,
+
+            image: productImage
+
+        });
+
+
+        // UPDATE CART COUNT
+
+        cartCount =
+            cartProducts.length;
+
+        cartCountElement.textContent =
+            cartCount;
+
+
+        // UPDATE CART CONTENT
+
+        updateCart();
+
+
+        // OPEN CART PANEL
+
+        cartPanel.classList.add("active");
+
+        cartOverlay.classList.add("active");
+
+    });
+
+});
