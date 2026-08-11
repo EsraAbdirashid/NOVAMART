@@ -715,9 +715,7 @@ if (wishlistOverlay) {
 }
 
 
-// ======================================================
 // ADD TO WISHLIST
-// ======================================================
 
 wishlistButtons.forEach((button) => {
 
@@ -743,19 +741,16 @@ wishlistButtons.forEach((button) => {
                 .textContent
                 .trim();
 
-
         const productImage =
             productCard
                 .querySelector(".product-image img")
                 .src;
-
 
         const alreadyExists =
             wishlistProducts.some(
                 (product) =>
                     product.name === productName
             );
-
 
         // REMOVE
 
@@ -771,7 +766,6 @@ wishlistButtons.forEach((button) => {
             button.classList.remove("active");
 
         }
-
 
         // ADD
 
@@ -790,7 +784,6 @@ wishlistButtons.forEach((button) => {
 
         }
 
-
         updateWishlist();
 
     });
@@ -798,17 +791,13 @@ wishlistButtons.forEach((button) => {
 });
 
 
-// ======================================================
 // UPDATE WISHLIST
-// ======================================================
 
 function updateWishlist() {
 
     if (!wishlistItems) return;
 
-
     wishlistItems.innerHTML = "";
-
 
     if (wishlistCountElement) {
 
@@ -816,7 +805,6 @@ function updateWishlist() {
             wishlistProducts.length;
 
     }
-
 
     // EMPTY
 
@@ -842,11 +830,9 @@ function updateWishlist() {
         const item =
             document.createElement("div");
 
-
         item.classList.add(
             "wishlist-item"
         );
-
 
         item.innerHTML = `
 
@@ -862,7 +848,6 @@ function updateWishlist() {
                 <strong>${product.price}</strong>
 
             </div>
-
 
             <button
                 class="wishlist-add-cart"
