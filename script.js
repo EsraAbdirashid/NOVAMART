@@ -1435,10 +1435,7 @@ if (clearCompare) {
 
 }
 
-
-// ======================================================
 // CLOSE COMPARE WHEN OVERLAY IS CLICKED
-// ======================================================
 
 if (cartOverlay) {
 
@@ -1457,10 +1454,7 @@ if (cartOverlay) {
 
 }
 
-
-// ======================================================
 // NEWSLETTER
-// ======================================================
 
 const newsletterForm =
     document.querySelector(".newsletter-form");
@@ -1473,16 +1467,12 @@ if (newsletterForm) {
         (event) => {
 
             event.preventDefault();
-
-
             const emailInput =
                 newsletterForm.querySelector(
                     'input[type="email"]'
                 );
 
-
             if (!emailInput) return;
-
 
             alert(
                 "Thank you for subscribing to NovaMart!"
@@ -1496,17 +1486,14 @@ if (newsletterForm) {
 
 }
 
-
-// ======================================================
-// INITIAL UPDATE
-// ======================================================
+// INITIAL UPDATE 
 
 updateCart();
 updateWishlist();
 updateCompare();
 
 
-// ================= SPECIAL OFFER SHOP NOW =================
+// ========= SPECIAL OFFER SHOP NOW ======
 
 const offerCartButtons =
     document.querySelectorAll(".offer-cart-btn");
