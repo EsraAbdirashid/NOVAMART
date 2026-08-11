@@ -1,12 +1,4 @@
-// ======================================================
-// NOVAMART - MAIN JAVASCRIPT
-// ======================================================
-
-
-// ======================================================
 // MOBILE MENU
-// ======================================================
-
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 
@@ -36,7 +28,6 @@ if (menuToggle && navLinks) {
         }
 
     });
-
 
     const navItems = document.querySelectorAll(".nav-links a");
 
