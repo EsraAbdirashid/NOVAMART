@@ -1059,10 +1059,7 @@ function openCompare() {
 
 }
 
-
-// ======================================================
 // CLOSE COMPARE
-// ======================================================
 
 function closeCompare() {
 
@@ -1081,9 +1078,7 @@ function closeCompare() {
 }
 
 
-// ======================================================
 // NAVBAR COMPARE BUTTON
-// ======================================================
 
 if (compareNav) {
 
@@ -1099,10 +1094,7 @@ if (compareNav) {
 
 }
 
-
-// ======================================================
 // CLOSE COMPARE
-// ======================================================
 
 if (compareClose) {
 
@@ -1113,10 +1105,7 @@ if (compareClose) {
 
 }
 
-
-// ======================================================
 // ADD PRODUCT TO COMPARE
-// ======================================================
 
 compareButtons.forEach((button) => {
 
@@ -1125,9 +1114,7 @@ compareButtons.forEach((button) => {
         const productCard =
             button.closest(".product-card");
 
-
         if (!productCard) return;
-
 
         const productName =
             productCard
@@ -1135,19 +1122,16 @@ compareButtons.forEach((button) => {
                 .textContent
                 .trim();
 
-
         const productPrice =
             productCard
                 .querySelector(".product-bottom strong")
                 .textContent
                 .trim();
 
-
         const productImage =
             productCard
                 .querySelector(".product-image img")
                 .src;
-
 
         // CHECK DUPLICATE
 
@@ -1156,7 +1140,6 @@ compareButtons.forEach((button) => {
                 (product) =>
                     product.name === productName
             );
-
 
         // IF ALREADY ADDED
 
@@ -1167,7 +1150,6 @@ compareButtons.forEach((button) => {
             return;
 
         }
-
 
         // MAXIMUM 3
 
@@ -1183,7 +1165,6 @@ compareButtons.forEach((button) => {
 
         }
 
-
         // ADD PRODUCT
 
         compareProducts.push({
@@ -1194,9 +1175,8 @@ compareButtons.forEach((button) => {
 
         });
 
-
         button.classList.add("active");
-        
+
         updateCompare();
 
         // OPEN PANEL
