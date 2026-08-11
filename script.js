@@ -654,9 +654,7 @@ const wishlistButtons =
 let wishlistProducts = [];
 
 
-// ======================================================
 // OPEN WISHLIST
-// ======================================================
 
 if (wishlistBtn && wishlistPanel && wishlistOverlay) {
 
