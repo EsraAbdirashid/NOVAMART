@@ -3287,67 +3287,53 @@ section {
 /* ================= TABLET ================= */
 
 @media (max-width: 900px) {
-
     .compare-panel {
         width: 80%;
     }
-
-    .comparison-table {
+    comparison-table {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-
 }
 
 
 /* ================= MOBILE ================= */
 
 @media (max-width: 600px) {
-
     .compare-panel {
         width: 100%;
     }
-
     .compare-header {
         padding: 18px;
     }
-
     .compare-header h2 {
         font-size: 20px;
     }
-
     .compare-content {
         padding: 15px;
     }
-
     .comparison-table {
         grid-template-columns: 1fr;
     }
-
     .comparison-image {
         height: 220px;
     }
-
     .compare-footer {
         padding: 14px 18px;
     }
-
 }
 
 /* ================= PRODUCT ACTIONS FIX ================= */
-
 .product-bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
 }
-
 .product-actions {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 8px;
-
     flex-shrink: 0;
 }
 
@@ -3357,27 +3343,18 @@ section {
 .product-actions button {
     width: 34px !important;
     height: 34px !important;
-
     min-width: 34px !important;
     max-width: 34px !important;
-
     padding: 0 !important;
-
     border: none;
     border-radius: 6px;
-
     background: transparent;
-
     display: flex !important;
     align-items: center;
     justify-content: center;
-
     cursor: pointer;
-
     flex-shrink: 0;
-
     font-size: 15px;
-
     transition: all 0.25s ease;
 }
 
@@ -3450,4 +3427,4 @@ section {
     padding: 0 !important;
     margin: 0 !important;
 }
-h2{
+
