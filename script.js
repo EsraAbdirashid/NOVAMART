@@ -673,9 +673,7 @@ if (wishlistBtn && wishlistPanel && wishlistOverlay) {
 }
 
 
-// ======================================================
 // CLOSE WISHLIST
-// ======================================================
 
 function closeWishlist() {
 
@@ -685,7 +683,6 @@ function closeWishlist() {
 
     }
 
-
     if (wishlistOverlay) {
 
         wishlistOverlay.classList.remove("active");
@@ -693,7 +690,6 @@ function closeWishlist() {
     }
 
 }
-
 
 if (wishlistClose) {
 
@@ -704,7 +700,6 @@ if (wishlistClose) {
 
 }
 
-
 if (wishlistOverlay) {
 
     wishlistOverlay.addEventListener(
@@ -713,7 +708,6 @@ if (wishlistOverlay) {
     );
 
 }
-
 
 // ADD TO WISHLIST
 
