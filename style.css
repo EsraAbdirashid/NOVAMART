@@ -3332,3 +3332,121 @@ section {
     }
 
 }
+
+/* ================= PRODUCT ACTIONS FIX ================= */
+
+.product-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.product-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+
+    flex-shrink: 0;
+}
+
+
+/* ALL PRODUCT BUTTONS */
+
+.product-actions button {
+    width: 34px !important;
+    height: 34px !important;
+
+    min-width: 34px !important;
+    max-width: 34px !important;
+
+    padding: 0 !important;
+
+    border: none;
+    border-radius: 6px;
+
+    background: transparent;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+
+    font-size: 15px;
+
+    transition: all 0.25s ease;
+}
+
+
+/* ICON */
+
+.product-actions button i {
+    font-size: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* WISHLIST */
+
+.product-actions .add-to-wishlist {
+    color: #42c883;
+}
+
+.product-actions .add-to-wishlist:hover,
+.product-actions .add-to-wishlist.active {
+    background: #42c883;
+    color: white;
+}
+
+
+/* COMPARE */
+
+.product-actions .compare-product,
+.product-actions .compare-btn {
+    color: #42c883 !important;
+
+    background: transparent !important;
+}
+
+.product-actions .compare-product:hover,
+.product-actions .compare-btn:hover,
+.product-actions .compare-product.active,
+.product-actions .compare-btn.active {
+    background: #42c883 !important;
+    color: white !important;
+}
+
+
+/* CART */
+
+.product-actions .add-to-cart {
+    color: #42c883 !important;
+
+    background: transparent !important;
+}
+
+.product-actions .add-to-cart:hover {
+    background: #42c883 !important;
+    color: white !important;
+}
+
+
+/* REMOVE ANY LARGE BUTTON SIZE */
+
+.product-actions .compare-product,
+.product-actions .compare-btn,
+.product-actions .add-to-cart,
+.product-actions .add-to-wishlist {
+    width: 34px !important;
+    height: 34px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+}

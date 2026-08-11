@@ -1400,7 +1400,6 @@ function updateCompareButtons() {
                 .textContent
                 .trim();
 
-
         const exists =
             compareProducts.some(
                 (product) =>
