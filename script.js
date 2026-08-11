@@ -872,7 +872,6 @@ function updateWishlist() {
                 <i class="fa-solid fa-cart-plus"></i>
             </button>
 
-
             <button
                 class="remove-wishlist-item"
                 data-index="${index}"
@@ -882,7 +881,6 @@ function updateWishlist() {
             </button>
 
         `;
-
 
         wishlistItems.appendChild(item);
 
@@ -900,13 +898,10 @@ function updateWishlist() {
                 const index =
                     Number(button.dataset.index);
 
-
                 const removedProduct =
                     wishlistProducts[index];
 
-
                 wishlistProducts.splice(index, 1);
-
 
                 // RESET HEART
 
@@ -915,15 +910,12 @@ function updateWishlist() {
                     const card =
                         heart.closest(".product-card");
 
-
                     if (!card) return;
-
 
                     const name =
                         card.querySelector(
                             ".product-info h3"
                         ).textContent.trim();
-
 
                     if (
                         name === removedProduct.name
@@ -937,13 +929,11 @@ function updateWishlist() {
 
                 });
 
-
                 updateWishlist();
 
             });
 
         });
-
 
     // ADD WISHLIST PRODUCT TO CART
 
@@ -956,10 +946,8 @@ function updateWishlist() {
                 const index =
                     Number(button.dataset.index);
 
-
                 const product =
                     wishlistProducts[index];
-
 
                 productCards.forEach((card) => {
 
@@ -968,14 +956,12 @@ function updateWishlist() {
                             ".product-info h3"
                         ).textContent.trim();
 
-
                     if (name === product.name) {
 
                         const cartBtn =
                             card.querySelector(
                                 ".add-to-cart"
                             );
-
 
                         if (cartBtn) {
 
@@ -993,14 +979,7 @@ function updateWishlist() {
 
 }
 
-
-// ======================================================
 // COMPARE
-// ======================================================
-
-// IMPORTANT:
-// Waxaan isticmaalay .compare-product iyo .compare-btn
-// labadaba si HTML-kaaga hadda jira uu u shaqeeyo.
 
 const compareButtons =
     document.querySelectorAll(
@@ -1038,10 +1017,7 @@ const emptyCompare =
 
 let compareProducts = [];
 
-
-// ======================================================
 // OPEN COMPARE
-// ======================================================
 
 function openCompare() {
 
