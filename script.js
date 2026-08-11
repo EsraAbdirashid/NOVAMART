@@ -1504,3 +1504,25 @@ if (newsletterForm) {
 updateCart();
 updateWishlist();
 updateCompare();
+
+
+// ================= SPECIAL OFFER SHOP NOW =================
+
+const offerCartButtons = document.querySelectorAll(".offer-cart-btn");
+
+offerCartButtons.forEach((button) => {
+
+    button.addEventListener("click", (e) => {
+
+        e.preventDefault();
+
+        if (cartPanel && cartOverlay) {
+
+            cartPanel.classList.add("active");
+            cartOverlay.classList.add("active");
+
+        }
+
+    });
+
+});
