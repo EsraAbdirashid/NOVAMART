@@ -3428,3 +3428,130 @@ section {
     margin: 0 !important;
 }
 
+/* ================= PRODUCT ACTIONS - FINAL FIX ================= */
+
+.product-bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.product-bottom > strong {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    font-size: 15px;
+}
+
+
+/* 3 ICONS */
+.product-actions {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 3px !important;
+
+    flex-shrink: 0;
+    width: auto;
+}
+
+
+/* EACH ICON BUTTON */
+.product-actions button {
+    width: 29px !important;
+    min-width: 29px !important;
+    max-width: 29px !important;
+
+    height: 29px !important;
+    min-height: 29px !important;
+    max-height: 29px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: none !important;
+    border-radius: 5px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    flex-shrink: 0 !important;
+
+    background: transparent !important;
+
+    cursor: pointer;
+}
+
+
+/* ICON SIZE */
+.product-actions button i {
+    font-size: 13px !important;
+}
+
+
+/* WISHLIST */
+.product-actions .add-to-wishlist {
+    color: #42c883 !important;
+}
+
+.product-actions .add-to-wishlist:hover,
+.product-actions .add-to-wishlist.active {
+    background: #42c883 !important;
+    color: #fff !important;
+}
+
+
+/* COMPARE */
+.product-actions .compare-btn,
+.product-actions .compare-product {
+    color: #42c883 !important;
+}
+
+.product-actions .compare-btn:hover,
+.product-actions .compare-product:hover,
+.product-actions .compare-btn.active,
+.product-actions .compare-product.active {
+    background: #42c883 !important;
+    color: #fff !important;
+}
+
+
+/* CART */
+.product-actions .add-to-cart {
+    color: #42c883 !important;
+}
+
+.product-actions .add-to-cart:hover {
+    background: #42c883 !important;
+    color: #fff !important;
+}
+
+
+/* ================= SMALL PRODUCT CARDS ================= */
+
+@media (max-width: 500px) {
+
+    .product-bottom > strong {
+        font-size: 13px;
+    }
+
+    .product-actions {
+        gap: 2px !important;
+    }
+
+    .product-actions button {
+        width: 27px !important;
+        min-width: 27px !important;
+
+        height: 27px !important;
+        min-height: 27px !important;
+    }
+
+    .product-actions button i {
+        font-size: 12px !important;
+    }
+}
