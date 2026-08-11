@@ -1353,46 +1353,46 @@ updateCompare();
 
 // ========= SPECIAL OFFER SHOP NOW ======
 
-const offerCartButtons =
-    document.querySelectorAll(".offer-cart-btn");
+// const offerCartButtons =
+//     document.querySelectorAll(".offer-cart-btn");
 
-offerCartButtons.forEach((button) => {
+// offerCartButtons.forEach((button) => {
 
-    button.addEventListener("click", (e) => {
+//     button.addEventListener("click", (e) => {
 
-        e.preventDefault();
+//         e.preventDefault();
 
-        const productName =
-            button.dataset.product;
+//         const productName =
+//             button.dataset.product;
 
-        const productPrice =
-            parseFloat(button.dataset.price);
+//         const productPrice =
+//             parseFloat(button.dataset.price);
 
-        const productImage =
-            button.dataset.image;
+//         const productImage =
+//             button.dataset.image;
 
-        // ADD PRODUCT TO CART
+//         // ADD PRODUCT TO CART
 
-        cartProducts.push({
-            name: productName,
-            price: productPrice,
-            image: productImage
-        });
+//         cartProducts.push({
+//             name: productName,
+//             price: productPrice,
+//             image: productImage
+//         });
 
-        // UPDATE CART COUNT
+//         // UPDATE CART COUNT
 
-        cartCount =
-            cartProducts.length;
-        cartCountElement.textContent =
-            cartCount;
+//         cartCount =
+//             cartProducts.length;
+//         cartCountElement.textContent =
+//             cartCount;
 
-        // UPDATE CART CONTENT
+//         // UPDATE CART CONTENT
 
-        updateCart();
+//         updateCart();
 
-        // OPEN CART PANEL
+//         // OPEN CART PANEL
         
-        cartPanel.classList.add("active");
-        cartOverlay.classList.add("active");
-    });
-});
+//         cartPanel.classList.add("active");
+//         cartOverlay.classList.add("active");
+//     });
+// });
