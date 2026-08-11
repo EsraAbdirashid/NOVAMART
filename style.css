@@ -3555,23 +3555,3 @@ section {
         font-size: 12px !important;
     }
 }
-
-/* ================= SPECIAL OFFER BUTTON FIX ================= */
-
-.offer-card .offer-cart-btn {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-
-    width: auto !important;
-    height: auto !important;
-
-    padding: 12px 20px !important;
-
-    border-radius: 6px !important;
-
-    text-decoration: none !important;
-
-    cursor: pointer;
-}
